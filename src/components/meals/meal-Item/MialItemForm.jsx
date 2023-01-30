@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../../UI/button/Button";
-import { ReactComponent as PlysIcons } from "../../../assets/icons/Plys-icons.svg";
+import { ReactComponent as PlysIcons } from "../../../assets/icons/plusAdd.svg";
 
 function MialItemForm({ id }) {
   return (

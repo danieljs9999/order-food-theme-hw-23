@@ -45,7 +45,20 @@ const Card = styled.ul`
   background: #ffffff;
   border-radius: 16px;
   max-width: 64.9375rem;
-  /* width: 75%; */
   margin: 40px auto;
   padding: 40px 40px 20px 40px;
+
+  animation: 600ms ease-out 0s 1 normal forwards running slide-up;
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      transition-duration: 4s;
+    }
+  }
 `;

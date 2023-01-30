@@ -15,7 +15,7 @@ function BasketButton({ count }) {
 export default BasketButton;
 
 const StyledButton = styled.button`
-  padding: 10px 32px;
+  padding: 8px 32px;
   background: #5a1f08;
   border-radius: 30px;
   color: white;
@@ -45,8 +45,8 @@ const StyledCount = styled.span`
   background-color: #8a2b06;
   color: #ffffff;
   border-radius: 30px;
-  padding: 4px 20px;
+  padding: 4px 16px;
   font-weight: 700;
   font-size: 20px;
-  line-height: 27px;  
+  line-height: 27px;
 `;
