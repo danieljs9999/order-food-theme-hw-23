@@ -3,7 +3,13 @@ import styled from "styled-components";
 import { ReactComponent as PlusBasket } from "../../assets/icons/plusBasket.svg";
 import { ReactComponent as MinusBasket } from "../../assets/icons/minusBasket.svg";
 
-function BasketItem({ title, prise, amount }) {
+function BasketItem({
+  title,
+  prise,
+  amount,
+  incrementAmount,
+  decrementAmount,
+}) {
   return (
     <Conteiner>
       <Title>{title}</Title>
@@ -13,10 +19,11 @@ function BasketItem({ title, prise, amount }) {
           <Amount>x{amount}</Amount>
         </PriseAndAmountConteiner>
         <CounterContiner>
-          <ConteinerStyleMinusBasket>
+          <ConteinerStyleMinusBasket onClick={decrementAmount}>
             <MinusBasket />
           </ConteinerStyleMinusBasket>
-          <ConteinerStylePlusBasket>
+          {/*  */}
+          <ConteinerStylePlusBasket onClick={incrementAmount}>
             <PlusBasket />
           </ConteinerStylePlusBasket>
         </CounterContiner>
@@ -30,7 +37,7 @@ export default BasketItem;
 const Conteiner = styled.div`
   padding: 24px 0;
   width: 100%;
-  border-bottom: 1px solid #D6D6D6;
+  border-bottom: 1px solid #d6d6d6;
 `;
 
 const Title = styled.p`
@@ -91,6 +98,17 @@ const ConteinerStyleMinusBasket = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  :hover {
+    background-color: #8a2b06;
+    path {
+      stroke: white;
+    }
+  }
+
+  :active {
+    background-color: #993108;
+  }
 `;
 
 const ConteinerStylePlusBasket = styled.div`
@@ -102,4 +120,15 @@ const ConteinerStylePlusBasket = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  :hover {
+    background-color: #8a2b06;
+    path {
+      stroke: white;
+    }
+  }
+
+  :active {
+    background-color: #993108;
+  }
 `;

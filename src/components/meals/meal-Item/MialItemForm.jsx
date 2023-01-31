@@ -1,15 +1,43 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Button from "../../UI/button/Button";
 import { ReactComponent as PlysIcons } from "../../../assets/icons/plusAdd.svg";
+import { BasketContext } from "../../../store/BasketContext";
 
-function MialItemForm({ id }) {
+function MialItemForm({ id, title, price }) {
+  const { addToBasket } = useContext(BasketContext);
+
+  const [amount, setAmount] = useState(1);
+
+  const amountChangeHandler = (event) => {
+    setAmount(+event.target.value);
+  };
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const basketItem = {
+      id,
+      price,
+      title,
+      amount,
+    };
+
+    addToBasket(basketItem);
+  };
+
   return (
-    <StyledForm>
-      <Continer>
+    <StyledForm onSubmit={submitHandler}>
+      <IputContiner>
         <label htmlFor={id}>Amount</label>
-        <input min={1} max={5} type="number" id={id} defaultValue={1} />
-      </Continer>
+        <input
+          value={amount}
+          onChange={amountChangeHandler}
+          type="number"
+          id={id}
+          min={1}
+          max={5}
+        />
+      </IputContiner>
       <Button>
         <StyledIcon /> Add
       </Button>
@@ -23,7 +51,7 @@ const StyledIcon = styled(PlysIcons)`
   margin-right: 10px;
 `;
 
-const Continer = styled.div`
+const IputContiner = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 12px;

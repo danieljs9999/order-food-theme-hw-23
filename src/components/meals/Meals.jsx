@@ -1,39 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { fetchApi } from "../../lib/FetchApi";
 import MealItem from "./meal-Item/MealItem";
 
-const DUMMY_MEALS = [
-  {
-    id: "1",
-    title: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
-  },
-  {
-    id: "2",
-    title: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.0,
-  },
-  {
-    id: "3",
-    title: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
-  },
-  {
-    id: "4",
-    title: "Green Bowl",
-    description: "Healthy...and green...",
-    price: 19.99,
-  },
-];
-
 function Meals() {
+  const [meals, setMeals] = useState([]);
+  const [error, setError] = useState("");
+  const [isLoading, setLoading] = useState(true);
+
+  const getMeals = async () => {
+    try {
+      setLoading(true);
+      const response = await fetchApi("foods");
+      setMeals(response.data);
+      setLoading(false);
+    } catch (error) {
+      setError("Failed to load meals");
+    }
+  };
+
+  useEffect(() => {
+    getMeals();
+  }, []);
+
   return (
     <Card>
-      {DUMMY_MEALS.map((meal) => {
-        return <MealItem key={meal.id} meal={meal} />;
+      {isLoading && !error && <Loading></Loading>}
+      {error && <ErrorStyled>{error}</ErrorStyled>}
+      {meals.map((meal) => {
+        return (
+          <MealItem
+            title={meal.title}
+            description={meal.description}
+            price={meal.price}
+            key={meal._id}
+            id={meal._id}
+          />
+        );
       })}
     </Card>
   );
@@ -46,7 +49,7 @@ const Card = styled.ul`
   border-radius: 16px;
   max-width: 64.9375rem;
   margin: 40px auto;
-  padding: 40px 40px 20px 40px;
+  padding: 40px 40px 40px 40px;
 
   animation: 600ms ease-out 0s 1 normal forwards running slide-up;
 
@@ -58,7 +61,41 @@ const Card = styled.ul`
     to {
       opacity: 1;
       transform: translateY(0);
-      transition-duration: 4s;
+    }
+  }
+`;
+
+const ErrorStyled = styled.p`
+  color: red;
+  font-size: 6rem;
+  font-weight: 600;
+  position: fixed;
+  top: -30rem;
+  left: 5.5rem;
+  text-shadow: 1px 1px 1px #000000dd;
+`;
+
+const Loading = styled.span`
+  position: fixed;
+  top: -30rem;
+  left: 25rem;
+
+  width: 200px;
+  height: 200px;
+  border: 1rem solid #ffffff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  z-index: 100;
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 `;

@@ -18,7 +18,7 @@ function TotalAmount({ prise, onOrder, onClose }) {
         <Button variant="outlined" onClick={onClose}>
           Close
         </Button>
-        {prise > 0 && orderButton}
+        {orderButton}
       </ActionButtonConteiner>
     </div>
   );

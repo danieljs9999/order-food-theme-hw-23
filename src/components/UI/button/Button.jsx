@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-function Button({ children, onClick, variant = "contained" }) {
-  return <StyledButton onClick={onClick} variant={variant}>{children}</StyledButton>;
+function Button({ children, onClick, variant = "contained", ...rest }) {
+  return (
+    <StyledButton onClick={onClick} variant={variant} {...rest}>
+      {children}
+    </StyledButton>
+  );
 }
 
 export default Button;
