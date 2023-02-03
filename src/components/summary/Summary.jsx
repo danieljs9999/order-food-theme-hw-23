@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import BackgroundImg from "../../assets/images/summary-background.jpg";
 import SummaryInfoCard from "./SummaryInfoCard";
@@ -13,7 +13,7 @@ function Summary() {
   );
 }
 
-export default Summary;
+export default memo(Summary);
 
 const Conteiner = styled.div`
   position: relative;

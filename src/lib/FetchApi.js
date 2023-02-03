@@ -11,7 +11,7 @@ export const fetchApi = async (path, options = {}) => {
     if (requestOptions.method !== "GET") {
       requestOptions.body = JSON.stringify(options.body);
     }
-    
+
     const response = await fetch(`${BASE_URL}/${path}`, requestOptions);
 
     if (!response.ok) {

@@ -4,7 +4,6 @@ import styled from "styled-components";
 import MialItemForm from "./MialItemForm";
 
 function MealItem({ id, title, description, price }) {
-
   return (
     <StyledItem>
       <StyledItemInfo>

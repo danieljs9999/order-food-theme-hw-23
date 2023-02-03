@@ -26,7 +26,6 @@ const StyledButton = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
-
 `;
 
 const StyledTitle = styled.span`

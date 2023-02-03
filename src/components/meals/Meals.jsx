@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import styled from "styled-components";
 import { fetchApi } from "../../lib/FetchApi";
 import MealItem from "./meal-Item/MealItem";
@@ -42,7 +42,7 @@ function Meals() {
   );
 }
 
-export default Meals;
+export default memo(Meals);
 
 const Card = styled.ul`
   background: #ffffff;
@@ -82,20 +82,42 @@ const Loading = styled.span`
 
   width: 200px;
   height: 200px;
-  border: 1rem solid #ffffff;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+
+  border-radius: 50px;
+  animation: rotate 1s linear infinite;
   z-index: 100;
 
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
-    }
+  ::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50px;
+    border: 5px solid #fff;
+    animation: prixClipFix 2s linear infinite;
+  }
+
+  @keyframes rotate {
     100% {
       transform: rotate(360deg);
+    }
+  }
+
+  @keyframes prixClipFix {
+    0% {
+      clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+    }
+    25% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+    }
+    50% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+    }
+    75% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+    }
+    100% {
+      clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
     }
   }
 `;

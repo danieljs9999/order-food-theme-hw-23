@@ -10,6 +10,7 @@ function BasketItem({
   incrementAmount,
   decrementAmount,
 }) {
+
   return (
     <Conteiner>
       <Title>{title}</Title>
