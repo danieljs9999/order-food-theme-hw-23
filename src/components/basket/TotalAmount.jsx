@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../UI/button/Button";
+import Button from "../UI/Button";
 
 function TotalAmount({ prise, onOrder, onClose }) {
   const orderButton =

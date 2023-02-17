@@ -1,17 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Button from "../../UI/button/Button";
+import Button from "../../UI/Button";
 import { ReactComponent as PlysIcons } from "../../../assets/icons/plusAdd.svg";
-import { BasketContext } from "../../../store/BasketContext";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../../store/basket/basketReducer";
 
 function MialItemForm({ id, title, price }) {
-  const { addToBasket } = useContext(BasketContext);
-
+  const dispatch = useDispatch();
   const [amount, setAmount] = useState(1);
 
   const amountChangeHandler = (event) => {
     setAmount(+event.target.value);
   };
+
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -22,7 +23,7 @@ function MialItemForm({ id, title, price }) {
       amount,
     };
 
-    addToBasket(basketItem);
+    dispatch(addToBasket(basketItem));
   };
 
   return (

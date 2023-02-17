@@ -83,7 +83,7 @@ const Loading = styled.span`
   width: 200px;
   height: 200px;
 
-  border-radius: 50px;
+  border-radius: 100px;
   animation: rotate 1s linear infinite;
   z-index: 100;
 
@@ -91,9 +91,9 @@ const Loading = styled.span`
     content: "";
     box-sizing: border-box;
     position: absolute;
-    inset: 0px;
-    border-radius: 50px;
-    border: 5px solid #fff;
+    inset: 10px;
+    border-radius: 100px;
+    border: 10px solid #fff;
     animation: prixClipFix 2s linear infinite;
   }
 
