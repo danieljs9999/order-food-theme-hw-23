@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "../../UI/Button";
 import { ReactComponent as PlysIcons } from "../../../assets/icons/plusAdd.svg";
 import { useDispatch } from "react-redux";
-import { addToBasket } from "../../../store/basket/basketReducer";
+import { addToBasket } from "../../../store/basket/basketSlise";
 
 function MialItemForm({ id, title, price }) {
   const dispatch = useDispatch();

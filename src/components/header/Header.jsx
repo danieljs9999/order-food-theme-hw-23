@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { getBasket } from "../../store/basket/basketReducer";
+import { getBasket } from "../../store/basket/basketSlise";
 import BasketButton from "./BasketButton";
 
 function Header({ onShowBasket }) {
   const dispatch = useDispatch();
+
   const items = useSelector((state) => state.basket.items);
 
   const [animationClass, setAnimationClass] = useState("");

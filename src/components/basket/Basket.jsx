@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {
   deleteBasketItem,
   updateBasketItem,
-} from "../../store/basket/basketReducer";
+} from "../../store/basket/basketSlise";
 import Modal from "../UI/Modal";
 import BasketItem from "./BasketItem";
 import TotalAmount from "./TotalAmount";

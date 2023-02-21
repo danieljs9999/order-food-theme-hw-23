@@ -13,7 +13,7 @@ function SummaryInfoCard() {
       <PText1>
         All our meals are cooked with high-quality ingredients, just-in-time and
         of course by
-        <br /> experienced chefs!
+        <br /> experienced chefs !
       </PText1>
     </Card>
   );
