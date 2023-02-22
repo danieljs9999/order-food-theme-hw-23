@@ -98,3 +98,19 @@ export const deleteBasketItem = createAsyncThunk(
     }
   }
 );
+
+export const submitOrder = createAsyncThunk(
+  "basket/submitOrder",
+  async ({ orderData }, { dispatch, rejectWithValue }) => {
+    try {
+      await fetch(`https://jsonplaceholder.typicode.com/posts`, {
+        method: "POST",
+        body: orderData,
+      });
+
+      dispatch(getBasket());
+    } catch (error) {
+      return rejectWithValue("Something went wrong");
+    }
+  }
+);
