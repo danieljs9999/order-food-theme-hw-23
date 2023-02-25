@@ -1,47 +1,55 @@
+import { Stack } from "@mui/system";
+import { styled as MuiStyled } from "@mui/system";
 import React from "react";
-import styled from "styled-components";
+import { Button as MuiButton } from "@mui/material";
 
-function Button({ children, onClick, variant = "contained", ...rest }) {
+function Button({ children, onClick, variants = "contained", ...rest }) {
   return (
-    <StyledButton onClick={onClick} variant={variant} {...rest}>
-      {children}
-    </StyledButton>
+    <>
+      <Stack>
+        <StyledButtonMui onClick={onClick} variants={variants} {...rest}>
+          {children}
+        </StyledButtonMui>
+      </Stack>
+    </>
   );
 }
 
 export default Button;
 
 const getBackgroundColor = (props) => {
-  return props.variant === "contained" ? "#5a1f08" : "#fff";
+  return props.variants === "contained" ? "#5a1f08" : "#fff";
 };
 
 const getBorder = (props) => {
-  return props.variant === "contained" ? "none" : "1px solid #8a2b06";
+  return props.variants === "contained" ? "none" : "1px solid #8a2b06";
 };
 
 const getColor = (props) => {
-  return props.variant === "contained" ? "#fff" : "#8a2b06";
+  return props.variants === "contained" ? "#fff" : "#8a2b06";
 };
 
-const StyledButton = styled.button`
-  padding: 10px 32px;
-  background: ${getBackgroundColor};
-  border-radius: 30px;
-  color: ${getColor};
-  font-weight: 600;
-  font-size: 16px;
-  border: ${getBorder};
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+const StyledButtonMui = MuiStyled(MuiButton)((variants) => ({
+  "& ": {
+    padding: "10px 32px",
+    background: getBackgroundColor(variants),
+    borderRadius: "30px",
+    color: getColor(variants),
+    fontWeight: "600",
+    fontSize: "16px",
+    border: getBorder(variants),
+    lineHeight: "24px",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
 
-  :hover {
-    background-color: #7e2a0a;
-    color: white;
-  }
+    ":hover": {
+      backgroundColor: "#7e2a0a",
+      color: "white",
+    },
 
-  :active {
-    background-color: #7e2a0a;
-  }
-`;
+    ":active": {
+      backgroundColor: "#7e2a0a",
+    },
+  },
+}));

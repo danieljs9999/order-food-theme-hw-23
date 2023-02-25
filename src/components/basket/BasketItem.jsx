@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as PlusBasket } from "../../assets/icons/plusBasket.svg";
-import { ReactComponent as MinusBasket } from "../../assets/icons/minusBasket.svg";
+import { styled as MuiStyled } from "@mui/system";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 function BasketItem({
   title,
@@ -20,11 +21,11 @@ function BasketItem({
         </PriseAndAmountConteiner>
         <CounterContiner>
           <ConteinerStyleMinusBasket onClick={decrementAmount}>
-            <MinusBasket />
+            <RemoveIconMui />
           </ConteinerStyleMinusBasket>
           {/*  */}
           <ConteinerStylePlusBasket onClick={incrementAmount}>
-            <PlusBasket />
+            <AddIconMui />
           </ConteinerStylePlusBasket>
         </CounterContiner>
       </Content>
@@ -101,15 +102,22 @@ const ConteinerStyleMinusBasket = styled.div`
 
   :hover {
     background-color: #8a2b06;
-    path {
-      stroke: white;
-    }
+  }
+
+  :hover svg {
+    color: #fff;
   }
 
   :active {
     background-color: #993108;
   }
 `;
+
+const RemoveIconMui = MuiStyled(RemoveIcon)(() => ({
+  "& ": {
+    color: "#8a2b06",
+  },
+}));
 
 const ConteinerStylePlusBasket = styled.div`
   box-sizing: border-box;
@@ -123,12 +131,19 @@ const ConteinerStylePlusBasket = styled.div`
 
   :hover {
     background-color: #8a2b06;
-    path {
-      stroke: white;
-    }
+  }
+
+  :hover svg {
+    color: #fff;
   }
 
   :active {
     background-color: #993108;
   }
 `;
+
+const AddIconMui = MuiStyled(AddIcon)(() => ({
+  "& ": {
+    color: "#8a2b06",
+  },
+}));

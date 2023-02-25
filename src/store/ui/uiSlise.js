@@ -4,7 +4,7 @@ const initialState = {
   snackbar: {
     isOpen: false,
     message: "",
-    severity: "",
+    severity: "success",
   },
 };
 

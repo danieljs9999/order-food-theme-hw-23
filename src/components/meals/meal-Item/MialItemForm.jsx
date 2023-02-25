@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { styled as MuiStyled } from "@mui/system";
 import Button from "../../UI/Button";
-import { ReactComponent as PlysIcons } from "../../../assets/icons/plusAdd.svg";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../../store/basket/basketSlise";
+import { TextField } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 function MialItemForm({ id, title, price }) {
   const dispatch = useDispatch();
@@ -27,19 +29,23 @@ function MialItemForm({ id, title, price }) {
   };
 
   return (
-    <StyledForm onSubmit={submitHandler}>
+    <StyledForm>
       <IputContiner>
         <label htmlFor={id}>Amount</label>
-        <input
+
+        <StyledTextField
+          type="number"
           value={amount}
           onChange={amountChangeHandler}
-          type="number"
           id={id}
-          min={1}
           max={5}
+          InputLabelProps={{
+            shrin: true,
+          }}
+          inputProps={{ min: 1, max: 5 }}
         />
       </IputContiner>
-      <Button>
+      <Button onClick={submitHandler}>
         <StyledIcon /> Add
       </Button>
     </StyledForm>
@@ -48,7 +54,16 @@ function MialItemForm({ id, title, price }) {
 
 export default MialItemForm;
 
-const StyledIcon = styled(PlysIcons)`
+const StyledTextField = MuiStyled(TextField)(() => ({
+  "& 	.MuiOutlinedInput-input": {
+    boxSizing: "border-box",
+    width: "60px",
+    fontWeight: "500",
+    fontSize: "16px",
+  },
+}));
+
+const StyledIcon = styled(AddIcon)`
   margin-right: 10px;
 `;
 
@@ -63,19 +78,6 @@ const IputContiner = styled.div`
     line-height: 27px;
     color: #222222;
     margin-right: 20px;
-  }
-
-  input {
-    box-sizing: border-box;
-    border: 1px solid #d6d6d6;
-    border-radius: 6px;
-    width: 60px;
-    outline: none;
-    padding: 4px 12px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #222222;
   }
 `;
 

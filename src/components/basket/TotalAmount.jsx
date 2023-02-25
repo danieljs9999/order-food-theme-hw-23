@@ -15,7 +15,7 @@ function TotalAmount({ prise, onOrder, onClose }) {
         <Prise>${fixedPrise}</Prise>
       </InfoConteiner>
       <ActionButtonConteiner>
-        <Button variant="outlined" onClick={onClose}>
+        <Button variants="outlined" onClick={onClose}>
           Close
         </Button>
         {orderButton}

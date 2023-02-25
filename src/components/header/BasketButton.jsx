@@ -1,32 +1,45 @@
 import React from "react";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import Button from "@mui/material/Button";
+import { Stack } from "@mui/material";
 import styled from "styled-components";
-import { ReactComponent as BasketIcons } from "../../assets/icons/basket-icons.svg";
+import { styled as MuiStyled } from "@mui/system";
 
 function BasketButton({ count, ...restProps }) {
   return (
-    <StyledButton {...restProps}>
-      <BasketIcons />
-      <StyledTitle>Your Cart</StyledTitle>
-      <StyledCount id="counter"> {count || 0} </StyledCount>
-    </StyledButton>
+    <>
+      <Stack>
+        <StyledButtonMui {...restProps}>
+          <ShoppingCartOutlinedIcon />
+          <StyledTitle>Your Cart</StyledTitle>
+          <StyledCount id="counter"> {count || 0} </StyledCount>
+        </StyledButtonMui>
+      </Stack>
+    </>
   );
 }
 
 export default BasketButton;
 
-const StyledButton = styled.button`
-  padding: 8px 32px;
-  background: #5a1f08;
-  border-radius: 30px;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  border: none;
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-`;
+const StyledButtonMui = MuiStyled(Button)(() => ({
+  "& ": {
+    padding: "8px 32px",
+    background: "#5a1f08",
+    borderRadius: "30px",
+    color: "white",
+    fontWeight: "600",
+    fontSize: "14px",
+    border: "none",
+    lineHeight: "24px",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+
+    ":hover": {
+      background: "#722000",
+    },
+  },
+}));
 
 const StyledTitle = styled.span`
   margin-left: 12px;
