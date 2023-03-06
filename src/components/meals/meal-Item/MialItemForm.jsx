@@ -1,32 +1,33 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { styled as MuiStyled } from "@mui/system";
-import Button from "../../UI/Button";
-import { useDispatch } from "react-redux";
-import { addToBasket } from "../../../store/basket/basketSlise";
-import { TextField } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import { styled as MuiStyled } from '@mui/material/styles'
+import { useDispatch } from 'react-redux'
+import { TextField } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
+import { addToBasket } from '../../../store/basket/basket.slise'
+import Button from '../../UI/Button'
 
 function MialItemForm({ id, title, price }) {
-  const dispatch = useDispatch();
-  const [amount, setAmount] = useState(1);
+  const dispatch = useDispatch()
+  const [amount, setAmount] = useState(1)
 
   const amountChangeHandler = (event) => {
-    setAmount(+event.target.value);
-  };
+    setAmount(+event.target.value)
+  }
 
   const submitHandler = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     const basketItem = {
       id,
       price,
       title,
       amount,
-    };
+    }
 
-    dispatch(addToBasket(basketItem));
-  };
+    dispatch(addToBasket(basketItem))
+  }
 
   return (
     <StyledForm>
@@ -49,23 +50,23 @@ function MialItemForm({ id, title, price }) {
         <StyledIcon /> Add
       </Button>
     </StyledForm>
-  );
+  )
 }
 
-export default MialItemForm;
+export default MialItemForm
 
 const StyledTextField = MuiStyled(TextField)(() => ({
-  "& 	.MuiOutlinedInput-input": {
-    boxSizing: "border-box",
-    width: "60px",
-    fontWeight: "500",
-    fontSize: "16px",
+  '& 	.MuiOutlinedInput-input': {
+    boxSizing: 'border-box',
+    width: '60px',
+    fontWeight: '500',
+    fontSize: '16px',
   },
-}));
+}))
 
 const StyledIcon = styled(AddIcon)`
   margin-right: 10px;
-`;
+`
 
 const IputContiner = styled.div`
   display: flex;
@@ -79,10 +80,10 @@ const IputContiner = styled.div`
     color: #222222;
     margin-right: 20px;
   }
-`;
+`
 
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-`;
+`

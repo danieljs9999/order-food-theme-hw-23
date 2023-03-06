@@ -1,21 +1,23 @@
-import React, { memo, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
-import { getmaeals } from "../../store/meals/mealsSlise";
-import MealItem from "./meal-Item/MealItem";
+/* eslint-disable no-underscore-dangle */
+import React, { memo, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components'
+import { styled as MuiStyled } from '@mui/material/styles'
+import { getmaeals } from '../../store/meals/meals.slise'
+import MealItem from './meal-Item/MealItem'
 
 function Meals() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const { meals, error, isLoading } = useSelector((state) => state.meals);
+  const { meals, error, isLoading } = useSelector((state) => state.meals)
 
   useEffect(() => {
-    dispatch(getmaeals());
-  }, [dispatch]);
+    dispatch(getmaeals())
+  }, [dispatch])
 
   return (
     <Card>
-      {isLoading && !error && <Loading></Loading>}
+      {isLoading && !error && <Loading />}
       {error && <ErrorStyled>{error}</ErrorStyled>}
       {meals.map((meal) => {
         return (
@@ -26,34 +28,36 @@ function Meals() {
             key={meal._id}
             id={meal._id}
           />
-        );
+        )
       })}
     </Card>
-  );
+  )
 }
 
-export default memo(Meals);
+export default memo(Meals)
 
-const Card = styled.ul`
-  background: #ffffff;
-  border-radius: 16px;
-  max-width: 64.9375rem;
-  margin: 40px auto;
-  padding: 40px 40px 40px 40px;
+const Card = MuiStyled('ul')(({ theme }) => ({
+  '& ': {
+    backgroundColor: theme.palette.success.contrastText,
+    padding: '40px',
+    borderRadius: '16px',
+    maxWidth: '64.9375rem',
+    margin: '40px auto',
 
-  animation: 600ms ease-out 0s 1 normal forwards running slide-up;
+    animation: '600ms ease-out 0s 1 normal forwards running slide-up',
 
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(3rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`;
+    '@keyframes slide-down': {
+      from: {
+        opacity: '0',
+        transform: 'translateY(3rem)',
+      },
+      to: {
+        opacity: '1',
+        transform: 'translateY(0)',
+      },
+    },
+  },
+}))
 
 const ErrorStyled = styled.p`
   color: red;
@@ -63,7 +67,7 @@ const ErrorStyled = styled.p`
   top: -30rem;
   left: 5.5rem;
   text-shadow: 1px 1px 1px #000000dd;
-`;
+`
 
 const Loading = styled.span`
   position: fixed;
@@ -78,7 +82,7 @@ const Loading = styled.span`
   z-index: 100;
 
   ::before {
-    content: "";
+    content: '';
     box-sizing: border-box;
     position: absolute;
     inset: 10px;
@@ -110,4 +114,4 @@ const Loading = styled.span`
       clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
     }
   }
-`;
+`

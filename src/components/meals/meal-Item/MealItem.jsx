@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import MialItemForm from "./MialItemForm";
+import React from 'react'
+import styled from 'styled-components'
+import MialItemForm from './MialItemForm'
 
 function MealItem({ id, title, description, price }) {
   return (
@@ -10,14 +10,14 @@ function MealItem({ id, title, description, price }) {
         <p>{description}</p>
         <span>${price}</span>
       </StyledItemInfo>
-      <>
-        <MialItemForm id={id} price={price} title={title}></MialItemForm>
-      </>
+      <div>
+        <MialItemForm id={id} price={price} title={title} />
+      </div>
     </StyledItem>
-  );
+  )
 }
 
-export default MealItem;
+export default MealItem
 
 const StyledItem = styled.li`
   list-style: none;
@@ -31,7 +31,7 @@ const StyledItem = styled.li`
     border: none;
     margin-bottom: -10px;
   }
-`;
+`
 
 const StyledItemInfo = styled.div`
   margin-bottom: 20px;
@@ -51,11 +51,11 @@ const StyledItemInfo = styled.div`
     color: #ad5502;
     margin-top: 4px;
   }
-`;
+`
 
 const StyledTitle = styled.h4`
   font-weight: 600;
   font-size: 18px;
   line-height: 27px;
   color: #222222;
-`;
+`

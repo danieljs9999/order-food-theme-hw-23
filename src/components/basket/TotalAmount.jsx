@@ -1,12 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import Button from "../UI/Button";
+import React from 'react'
+import styled from 'styled-components'
+import { styled as MuiStyled } from '@mui/material/styles'
+import Button from '../UI/Button'
 
 function TotalAmount({ prise, onOrder, onClose }) {
   const orderButton =
-    prise > 0 ? <Button onClick={onOrder}>Order</Button> : null;
+    prise > 0 ? <Button onClick={onOrder}>Order</Button> : null
 
-  const fixedPrise = prise.toFixed(2);
+  const fixedPrise = prise.toFixed(2)
 
   return (
     <div>
@@ -21,35 +22,39 @@ function TotalAmount({ prise, onOrder, onClose }) {
         {orderButton}
       </ActionButtonConteiner>
     </div>
-  );
+  )
 }
 
-export default TotalAmount;
+export default TotalAmount
 
-const Label = styled.p`
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 30px;
-  text-align: center;
-  color: #222222;
-`;
+const Label = MuiStyled('p')(({ theme }) => ({
+  '& ': {
+    fontWeight: '700',
+    fontSize: '20px',
+    lineHeight: '30px',
+    textAlign: 'center',
+    color: theme.palette.secondary.contrastText,
+  },
+}))
 
-const Prise = styled.p`
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 33px;
-  color: #8a2b06;
-`;
+const Prise = MuiStyled('p')(({ theme }) => ({
+  '& ': {
+    fontWeight: '600',
+    fontSize: '22px',
+    lineHeight: '33px',
+    color: theme.palette.secondary.contrastText,
+  },
+}))
 
 const InfoConteiner = styled.div`
   padding-top: 30px;
   display: flex;
   justify-content: space-between;
-`;
+`
 
 const ActionButtonConteiner = styled.div`
   margin-top: 24px;
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-`;
+`
